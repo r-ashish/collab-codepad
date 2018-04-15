@@ -1,4 +1,4 @@
-FROM node:carbon
+FROM ubuntu:16.04
 
 # Create app directory
 WORKDIR /usr/src/app
