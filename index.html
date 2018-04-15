@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <!-- Firebase -->
+        <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <!-- Ace -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.5/ace.js"></script>
+        <script src="https://rawgithub.com/ajaxorg/ace-builds/master/src/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
+        <!-- Firepad -->
+        <link rel="stylesheet" href="https://cdn.firebase.com/libs/firepad/1.4.0/firepad.css" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <script src="https://cdn.firebase.com/libs/firepad/1.4.0/firepad.min.js"></script>
+        <link rel="stylesheet" href="firepad.css"/>
+    </head>
+    <body onload="init()">
+        <div id="pad-container">
+            <div id="firepad"></div>
+            <div id="horizontal-divider"></div>
+            <div id="console-container">
+                <div id="console">
+                    <p id="output-heading">Output will appear here: </p>
+                    <p id="output"></p>
+                    <p id="error"></p>                    
+                </div>
+                <div id="vertical-divider"></div>
+                <div id="input-box">
+                    <textarea id="stdin" placeholder="Enter Standard Input here"></textarea>
+                </div>
+            </div>
+        </div>
+        <div id="bootom-util-bar">
+            <select id="lang-select"></select>
+            <button id="run">
+                <i class="fa fa-play" aria-hidden="true"></i>
+                Run
+            </button>
+        </div>       
+        <script src="firepad.js"></script>
+        <script src="resize.js"></script>
+        <script src="run.js"></script>      
+    </body>
+</html>

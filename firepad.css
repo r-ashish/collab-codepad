@@ -1,0 +1,123 @@
+:root {
+    --bottom-margin: 40px;
+    --divider-thickness: 6px;
+}
+body{
+    margin: 0;
+    height: 100%;
+}
+.main-container{
+    display: table-cell;
+    vertical-align: top;
+}
+#pad-container {
+    font-size: 0;
+}
+#firepad {
+    height: calc(100% - var(--bottom-margin));
+}
+.firepad{
+    display: inline-block;    
+    width: 75%;   
+}
+#horizontal-divider{
+    background: url("horizontal-split.png") 1px 50% no-repeat;
+    background-size: 4px 24px;
+    width: var(--divider-thickness);
+    height: calc(100% - var(--bottom-margin));
+    background-color: #004f6d;
+    cursor: col-resize;
+    display: inline-block;  
+}
+
+#vertical-divider{
+    background: url("vertical-split.png") 50% 1px no-repeat;
+    background-size: 24px 4px;
+    height: var(--divider-thickness);
+    background-color: #004f6d;
+    cursor: row-resize;
+}
+
+#console-container {
+    display: table-cell;
+    vertical-align: top;
+    width: calc(25% - var(--divider-thickness));
+    height: calc(100% - var(--bottom-margin));
+    display: inline-block;    
+}
+
+#console {
+    height: 70%;
+    background: black;
+    color: #fff;
+    vertical-align:top;
+    overflow: auto;
+}
+
+#console p {
+    position: relative;
+    color: #fff;
+    font-size: 14px;
+    white-space: pre-line;
+    margin: 10px;
+    font-family: Menlo, 'Source Code Pro', monospace;
+}
+
+#console p#error{
+    color: red;
+}
+
+#input-box{
+    height: calc(30% - var(--divider-thickness));
+    vertical-align:top;
+    overflow: auto;
+}
+
+#lang-select{
+    margin-left: 20px;
+    height: 30px;
+    border: 0;
+    margin-top: 5px;
+    outline: none;        
+}
+
+#run{
+    font-size: 15px;
+    margin-left: 20px;
+    width: 80px;
+    height: 30px;   
+    color: white;
+    cursor: pointer;
+    background-color: rgb(97, 152, 32);
+    border-radius: 4px;
+    outline: none;    
+    border: 0;
+}
+
+#bootom-util-bar{
+    z-index: 999;
+    position: absolute;
+    box-shadow: 0 -5px 20px -5px #f7f7f7;
+    -moz-box-shadow: 0 -5px 20px -5px #f7f7f7;
+    -webkit-box-shadow: 0 -5px 20px -5px #f7f7f7;
+    width: 100%;
+    background-color: #004f6d;
+    bottom: 0;
+    height: 40px;
+}
+textarea{
+    resize: none;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    color: #fff;
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-size: 16px;
+    font-family: Menlo, 'Source Code Pro', monospace;    
+}
+
+.powered-by-firepad{
+    visibility: hidden;
+}
