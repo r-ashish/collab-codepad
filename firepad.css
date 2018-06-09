@@ -119,5 +119,26 @@ textarea{
 }
 
 .powered-by-firepad{
-    visibility: hidden;
+    display: none;
+}
+
+div#loading{
+    position: fixed;
+    z-index: 999;
+    background: rgba(256, 256, 256, 0.4);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.fa-spinner {
+    font-size: 30px;
+    margin: auto;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

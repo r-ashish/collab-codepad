@@ -49,15 +49,21 @@ $('#run').on('click', function() {
         code: codeF,
         stdin:stdin
     };
-    console.log(json);
+    // console.log(json);
 
-    $.post("http://localhost:9000/compile", json, function(data, error, xhr) {
-        console.log(data);
-        if(data.errors !== ""){
-            document.getElementById("output").innerHTML = "";
-            document.getElementById("error").innerHTML = data.errors;
-        }else{
+    $.post("http://localhost:9000/compile", json, function(data) {
+        // console.log(data);
+        if(data.errors===undefined || data.errors === ""){
             document.getElementById("output").innerHTML = data.output;
+        }else{
+            setErrorMessage(data.errors);
         }
+    }).fail(function(response) {
+        setErrorMessage("Failed to connect to the server, try again later!");
     });
 });
+
+function setErrorMessage(msg){
+    document.getElementById("output").innerHTML = "";
+    document.getElementById("error").innerHTML = msg;
+}

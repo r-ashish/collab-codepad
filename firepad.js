@@ -1,7 +1,5 @@
 var editor;
 function init() {
-    // Initialize Firebase.
-    // TODO: replace with your Firebase project configuration.
     var config = {
         apiKey: "AIzaSyAjZjSeuIkHqVShnTLueQdVYWUioEacLLM",
         authDomain: "learninfi-201000.firebaseapp.com",
@@ -9,7 +7,10 @@ function init() {
     };
     firebase.initializeApp(config);
     // Get Firebase Database reference.
-    var firepadRef = firebase.database().ref();
+    var firepadRef = firebase.database().ref('wb/'+getQueryParam('roomId'));
+    firepadRef.once('value', snapshot => {
+        document.getElementById('loading').style.display = 'none';
+    });
     // Create Ace editor.
     editor = ace.edit('firepad');
     editor.setOptions({enableLiveAutocompletion: true, showPrintMargin: false});
@@ -21,3 +22,30 @@ function init() {
     // Create Firepad.
     var firepad = Firepad.fromACE(firepadRef, editor);
 }
+
+const getQueryParam = (() => {
+    let dict = {};
+    try {
+        let params = window.location.search.substr(1); // can raise exception if no `search`
+        if (params !== "") {
+            params.split("&").forEach(param => {
+                let paramComponents = param.split('='); //split key, value pairs
+                if (paramComponents.length === 2) {
+                    let key = paramComponents[0];
+                    let rawValue = paramComponents[1];
+                    dict[key] = decodeURIComponent(rawValue.replace(/\+/g, " "));
+                }
+            });
+        }
+    } catch(e) {
+
+    }
+
+    return (key) => {
+        if(key in dict){
+            console.log(dict[key]);
+            return dict[key];
+        }
+        return '';
+    };
+})();
