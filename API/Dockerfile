@@ -37,7 +37,7 @@ RUN npm config set strict-ssl false
 # RUN apk update
 # RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
 # RUN apk add oracle-java8-installer
-RUN apk --update add openjdk7-jre
+RUN apk --update add openjdk7
 
 # RUN apk add gobjc
 # RUN apk add gnustep-devel &&  sed -i 's/#define BASE_NATIVE_OBJC_EXCEPTIONS     1/#define BASE_NATIVE_OBJC_EXCEPTIONS     0/g' /usr/include/GNUstep/GNUstepBase/GSConfig.h
@@ -57,6 +57,9 @@ RUN apk add sudo
 RUN apk add bc
 
 RUN apk add --update bash && rm -rf /var/cache/apk/*
+
+RUN apk add --no-cache python3
+RUN ln -s /usr/lib/jvm/java-1.7-openjdk/bin/javac /usr/bin/javac
 
 # RUN echo "mysql ALL = NOPASSWD: /usr/sbin/service mysql start" | cat >> /etc/sudoers
 

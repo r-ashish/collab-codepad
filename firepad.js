@@ -1,4 +1,5 @@
 var editor;
+
 function init() {
     var config = {
         apiKey: "AIzaSyAjZjSeuIkHqVShnTLueQdVYWUioEacLLM",
@@ -18,7 +19,7 @@ function init() {
     // editor.setTheme("ace/theme/vibrant_ink");
     // editor.setTheme("ace/theme/monokai");
     editor.session.setUseWrapMode(true);
-    editor.session.setMode("ace/mode/python");
+    // editor.session.setMode("ace/mode/python");
     // Create Firepad.
     var firepad = Firepad.fromACE(firepadRef, editor);
 }
@@ -43,7 +44,6 @@ const getQueryParam = (() => {
 
     return (key) => {
         if(key in dict){
-            console.log(dict[key]);
             return dict[key];
         }
         return '';

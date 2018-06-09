@@ -1,5 +1,5 @@
 var LANGS = {
-    10:["C#", "csharp"],
+    // 10:["C#", "csharp"],
     7: ["C/C++", "c_cpp"],
     // 2: ["Clojure", "clojure"],
     8: ["Java", "java"],
@@ -11,7 +11,7 @@ var LANGS = {
     // 1: ["Ruby", "ruby"],
     // 5: ["Scala", "scala"],
     // 9: ["VB.NET", "vbsccript"],
-    11: ["Bash", "bash"],
+    11: ["Bash", "sh"],
     // 12: ["Objective-C","objectivec"],
     // 13: ["MySQL","sql"],
     // 14: ["Perl", "perl"],
@@ -31,14 +31,12 @@ selectList.sort(function(a,b){
     b = b.text;
     return a > b?1:-1;
 })
-select.html(selectList)
-select.prop("selectedIndex", 6);
-select.on('change', function(){
-    editor.session.setMode("ace/mode/"+ LANGS[parseInt(this.value)][1]);    
-})
+select.html(selectList);
+
+const runningTerminalMessage = '> run cool_dudes_code & show_output<br><br>';
 
 $('#run').on('click', function() {
-    document.getElementById("output").innerHTML = "Running...";   
+    document.getElementById("output").innerHTML = runningTerminalMessage + "Running...";
     document.getElementById("error").innerHTML = ""; 
     var langid = $('#lang-select').val();
     var codeF = editor.getValue();
@@ -54,7 +52,7 @@ $('#run').on('click', function() {
     $.post("http://localhost:9000/compile", json, function(data) {
         // console.log(data);
         if(data.errors===undefined || data.errors === ""){
-            document.getElementById("output").innerHTML = data.output;
+            document.getElementById("output").innerHTML = runningTerminalMessage + data.output;
         }else{
             setErrorMessage(data.errors);
         }
@@ -64,6 +62,21 @@ $('#run').on('click', function() {
 });
 
 function setErrorMessage(msg){
-    document.getElementById("output").innerHTML = "";
+    document.getElementById("output").innerHTML = runningTerminalMessage;
     document.getElementById("error").innerHTML = msg;
+}
+
+window.onload = (e) => {
+    init();
+    const langPrefFirepad = firebase.database().ref('wb/'+getQueryParam('roomId')+'-langPref');
+    select.on('change', function(){
+        langPrefFirepad.set(parseInt(this.value));
+        editor.session.setMode("ace/mode/"+ LANGS[parseInt(this.value)][1]);
+    });
+
+    langPrefFirepad.once('value', snapshot => {
+        const langPref = snapshot.val()!==null?snapshot.val():5;
+        select.val(langPref);
+        editor.session.setMode("ace/mode/"+ LANGS[langPref][1]);
+    });
 }

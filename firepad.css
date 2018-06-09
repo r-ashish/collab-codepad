@@ -124,7 +124,7 @@ textarea{
 
 div#loading{
     position: fixed;
-    z-index: 999;
+    z-index: 9999;
     background: rgba(256, 256, 256, 0.4);
     height: 100%;
     width: 100%;
