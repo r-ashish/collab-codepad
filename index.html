@@ -16,27 +16,29 @@
         <div id="loading">
             <i class="fa fa-spinner" aria-hidden="true"></i>
         </div>
-        <div id="pad-container">
-            <div id="firepad"></div>
-            <div id="horizontal-divider"></div>
-            <div id="console-container">
-                <div id="console">
-                    <p id="output-heading">Output will appear here: </p>
-                    <p id="output"></p>
-                    <p id="error"></p>                    
-                </div>
-                <div id="vertical-divider"></div>
-                <div id="input-box">
-                    <textarea id="stdin" placeholder="Enter Standard Input here"></textarea>
+        <div class="main-container">
+            <div id="pad-container">
+                <div id="firepad"></div>
+                <div id="horizontal-divider"></div>
+                <div id="console-container">
+                    <div id="console">
+                        <p id="output-heading">Output will appear here: </p>
+                        <p id="output"></p>
+                        <p id="error"></p>
+                    </div>
+                    <div id="vertical-divider"></div>
+                    <div id="input-box">
+                        <textarea id="stdin" placeholder="Enter Standard Input here"></textarea>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div id="bootom-util-bar">
-            <select id="lang-select"></select>
-            <button id="run">
-                <i class="fa fa-play" aria-hidden="true"></i>
-                Run
-            </button>
+            <div id="bootom-util-bar">
+                <select id="lang-select"></select>
+                <button id="run">
+                    <i class="fa fa-play" aria-hidden="true"></i>
+                    Run
+                </button>
+            </div>
         </div>
         <script src="firepad.js"></script>
         <script src="resize.js"></script>

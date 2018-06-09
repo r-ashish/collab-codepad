@@ -7,18 +7,22 @@ body{
     height: 100%;
 }
 .main-container{
-    display: table-cell;
-    vertical-align: top;
+    display: flex;
+    flex-direction: column;
 }
+
 #pad-container {
-    font-size: 0;
+    display: flex;
+    flex: 1;
 }
+
 #firepad {
+    flex: 1;
     height: calc(100% - var(--bottom-margin));
 }
 .firepad{
-    display: inline-block;    
-    width: 75%;   
+    flex: 1;
+    width: 75%;
 }
 #horizontal-divider{
     background: url("horizontal-split.png") 1px 50% no-repeat;
@@ -27,7 +31,6 @@ body{
     height: calc(100% - var(--bottom-margin));
     background-color: #004f6d;
     cursor: col-resize;
-    display: inline-block;  
 }
 
 #vertical-divider{
@@ -39,11 +42,11 @@ body{
 }
 
 #console-container {
-    display: table-cell;
+    display: flex;
+    flex-direction: column;
     vertical-align: top;
     width: calc(25% - var(--divider-thickness));
     height: calc(100% - var(--bottom-margin));
-    display: inline-block;    
 }
 
 #console {
