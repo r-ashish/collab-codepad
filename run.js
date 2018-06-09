@@ -1,21 +1,21 @@
 var LANGS = {
     10:["C#", "csharp"],
     7: ["C/C++", "c_cpp"],
-    2: ["Clojure", "clojure"],
+    // 2: ["Clojure", "clojure"],
     8: ["Java", "java"],
-    6: ["Go", "go"],
+    // 6: ["Go", "go"],
     4: ["JavaScript (Plain)", "javascript"],
     3: ["PHP", "php"],
     0: ["Python 2", "python"],
     16: ["Python 3", "python"],    
-    1: ["Ruby", "ruby"],
-    5: ["Scala", "scala"],
-    9: ["VB.NET", "vbsccript"],
+    // 1: ["Ruby", "ruby"],
+    // 5: ["Scala", "scala"],
+    // 9: ["VB.NET", "vbsccript"],
     11: ["Bash", "bash"],
-    12: ["Objective-C","objectivec"],
-    13: ["MySQL","sql"],
-    14: ["Perl", "perl"],
-    15: ["Rust", "rust"],
+    // 12: ["Objective-C","objectivec"],
+    // 13: ["MySQL","sql"],
+    // 14: ["Perl", "perl"],
+    // 15: ["Rust", "rust"],
 }
 var select = $("#lang-select");
 
@@ -32,7 +32,7 @@ selectList.sort(function(a,b){
     return a > b?1:-1;
 })
 select.html(selectList)
-select.prop("selectedIndex", 11);
+select.prop("selectedIndex", 6);
 select.on('change', function(){
     editor.session.setMode("ace/mode/"+ LANGS[parseInt(this.value)][1]);    
 })
